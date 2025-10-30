@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Torneio Teste</title>
+    
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/jquery-bracket@0.11.1/dist/jquery.bracket.min.css"
+    />
+    <style>
+      
+    </style>
+  </head>
+  <body>
+
+    <div id="bracket"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-bracket@0.11.1/dist/jquery.bracket.min.js"></script>
+    <script>
+      $(function () {
+        var dados = {
+          teams: [
+            ["Brasil", "Espanha"],
+            ["Uruguai", "Argentina"],
+            ["Portugal", "Alemanha"],
+            ["Juventus", "Milan"],
+          ],
+          results: [
+          // 1. Chave dos Vencedores (Winners Bracket)
+          [
+            // Rodada 1
+            [[1, 0], [0, 1], [1, 0], [1, 0]],
+            // Rodada 2
+            [[1, 0], [0, 1]],
+            // Final dos Vencedores (Brasil vs Juventus -> Brasil Vence)
+            [[1, 0]]
+          ],
+
+          // 2. Chave dos Perdedores (Losers Bracket)
+          [
+            // L-Rodada 1 (Perdedores da R1: Esp vs Uru, Ale vs Mil)
+            [[1, 0], [1, 0]],
+            // L-Rodada 2 (Perdedores da R2: Arg vs Esp, Por vs Ale)
+            [[1, 0], [1, 0]],
+            // L-Rodada 3 (Arg vs Por)
+            [[1, 0]],
+            // L-Final (Perdedor da Final W: Juve vs Arg)
+            [[1, 0]]
+          ],
+
+          // 3. Grande Final (Vencedor W vs Vencedor L: Brasil vs Juventus)
+          [
+            [[1, 0]]
+          ]
+        ],
+      };
+
+        $("#bracket").bracket({ init: dados});
+      });
+    </script>
+  </body>
+</html>
